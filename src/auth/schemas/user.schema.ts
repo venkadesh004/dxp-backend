@@ -44,6 +44,9 @@ export class User {
 
   @Prop({ default: Date.now })
   updatedAt: Date;
+
+  @Prop({ type: String })
+  country?: String;
 }
 
 // Create schema and add virtual properties

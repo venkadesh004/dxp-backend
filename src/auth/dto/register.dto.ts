@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsString, MinLength, IsOptional, IsDateString } from "class-validator";
+import { IsEmail, IsNotEmpty, IsString, MinLength, IsOptional, IsDateString, IsIn } from "class-validator";
 
 export class RegisterDto {
   @IsEmail()
@@ -13,5 +13,10 @@ export class RegisterDto {
   @IsOptional()
   @IsDateString()
   birthdate?: string;
+
+  @IsOptional()
+  @IsString()
+  @IsIn(['us', 'in', 'eu'], { message: "Country must be one of: us, in, eu" })
+  country?: string;
 }
 

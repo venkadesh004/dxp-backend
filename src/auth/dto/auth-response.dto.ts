@@ -5,6 +5,7 @@ export class AuthResponseDto {
     createdAt: Date;
     birthdate?: Date;
     age?: number | null;
+    country?: string;
     recentlyViewed?: any[];
     wishlist?: string[];
     downloads?: string[];
@@ -18,6 +19,7 @@ export class UserResponseDto {
   createdAt: Date;
   birthdate?: Date;
   age?: number | null;
+  country?: string;
   recentlyViewed?: any[];
   wishlist?: string[];
   downloads?: string[];

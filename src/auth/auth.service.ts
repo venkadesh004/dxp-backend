@@ -21,7 +21,7 @@ export class AuthService {
   ) {}
 
   async register(registerDto: RegisterDto): Promise<AuthResponseDto> {
-    const { email, password, birthdate } = registerDto;
+    const { email, password, birthdate, country } = registerDto;
 
     // Check if user already exists
     const existingUser = await this.userModel.findOne({ email });
@@ -39,6 +39,7 @@ export class AuthService {
         email,
         password: hashedPassword,
         birthdate: birthdate ? new Date(birthdate) : undefined,
+        country: country || undefined,
         recentlyViewed: [],
       });
 
@@ -231,6 +232,7 @@ export class AuthService {
       createdAt: user.createdAt,
       birthdate: user.birthdate,
       age,
+      country: user.country as string | undefined,
       recentlyViewed: user.recentlyViewed || [],
       wishlist: user.wishlist?.map((item) => item.entryUid) || [],
       downloads: user.downloads?.map((item) => item.entryUid) || [],
